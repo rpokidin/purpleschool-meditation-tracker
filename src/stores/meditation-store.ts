@@ -4,12 +4,17 @@ import { defineStore } from 'pinia'
 import { ref } from 'vue'
 
 export const useMeditationStore = defineStore('meditation', () => {
-  const meditation = ref<Meditation[]>([])
+  const meditation = ref<Meditation[]>()
 
   async function fetchMeditation() {
-    const { data } = await http.get<Meditation[]>(API_ROUTES.meditation)
 
-    meditation.value = data.data.meditations
+    try {
+      const { data } = await http.get<{ data: { meditations: Meditation[] } }>(API_ROUTES.meditation)
+      meditation.value = data.data.meditations
+    } catch(err) {
+      alert(err)
+    }
+
   }
   
   return { meditation, fetchMeditation }
