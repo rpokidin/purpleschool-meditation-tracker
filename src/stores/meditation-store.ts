@@ -12,7 +12,7 @@ export const useMeditationStore = defineStore('meditation', () => {
       const { data } = await http.get<{ data: { meditations: Meditation[] } }>(API_ROUTES.meditation)
       meditation.value = data.data.meditations
     } catch(err) {
-      alert(err)
+      console.log(err)
     }
 
   }
