@@ -1,18 +1,16 @@
 :root {
   --black: #000;
-  --green: rgba(37, 51, 52, 1);
+  --green: #253334;
   --white: #FFF;
   --white-700: rgba(255, 255, 255, 0.7);
   --white-500: rgba(255, 255, 255, 0.5);
-  --text-from: rgba(190, 194, 194, 1);
-  --btn-form: rgba(124, 154, 146, 1);
-  --border-nav: rgba(58, 80, 81, 1);
-  --bg-card: rgba(247, 243, 240, 1);
+  --text-from: #BEC2C2;
+  --btn-form: #7C9A92;
 }
 
 *,
 *::before,
-*::after { 
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -20,6 +18,8 @@
 }
 
 .p-base {
+  max-width: 1280px;
+  margin: 0 auto;
   padding: 0 60px;
 }
 
@@ -39,7 +39,7 @@ body {
   min-height: 100vh;
   background: var(--green);
   color: var(--white);
-} 
+}
 
 ul {
   list-style: none;
@@ -47,10 +47,10 @@ ul {
 
 a {
   text-decoration: none;
-  color: var(--white);
 }
 
 button {
+  background-color: transparent;
   border: 0;
   cursor: pointer;
 }
