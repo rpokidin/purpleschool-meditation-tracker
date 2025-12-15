@@ -1,10 +1,13 @@
 :root {
-  --gren-900: rgba(37, 51, 52, 1);
-  --white-900: #FFF;
+  --black: #000;
+  --green: rgba(37, 51, 52, 1);
+  --white: #FFF;
   --white-700: rgba(255, 255, 255, 0.7);
   --white-500: rgba(255, 255, 255, 0.5);
   --text-from: rgba(190, 194, 194, 1);
   --btn-form: rgba(124, 154, 146, 1);
+  --border-nav: rgba(58, 80, 81, 1);
+  --bg-card: rgba(247, 243, 240, 1);
 }
 
 *,
@@ -16,10 +19,38 @@
   outline: none;
 }
 
+.p-base {
+  padding: 0 60px;
+}
+
+.df {
+  display: flex;
+}
+.jcsb {
+  justify-content: space-between;
+}
+.aic {
+  align-items: center;
+}
+
 body {
   font-family: "Alegreya Sans", sans-serif;
   font-weight: 400;
   min-height: 100vh;
-  background: var(--gren-900);
-  color: var(--white-900);
+  background: var(--green);
+  color: var(--white);
 } 
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: var(--white);
+}
+
+button {
+  border: 0;
+  cursor: pointer;
+}
