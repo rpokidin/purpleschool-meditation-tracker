@@ -27,11 +27,12 @@ onMounted(() => {
 <style scoped>
 .meditation-list {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 25px;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 170px);
+  grid-gap: 25px;
 }
 .meditation-card {
-  background-color: var(--bg-card);
+  background-color: #F7F3F0;
   width: 340px;
   padding: 20px 30px;
   border-radius: 20px;
@@ -65,12 +66,10 @@ onMounted(() => {
   height: 13px;
 }
 .meditation-card button:hover {
-  opacity: .9;
+  background-color: rgba(32, 39, 40, 1);
 }
 .meditation-card__time {
   font-size: 15px;
   color: var(--green);
 }
 </style>
-
-
