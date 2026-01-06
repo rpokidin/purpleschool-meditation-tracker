@@ -29,8 +29,18 @@
 .jcsb {
   justify-content: space-between;
 }
+.jcc {
+  justify-content: center;
+}
 .aic {
   align-items: center;
+}
+.fdc {
+  flex-direction: column;
+}
+
+.h100vh {
+  height: 100vh;
 }
 
 body {
@@ -39,6 +49,16 @@ body {
   min-height: 100vh;
   background: var(--green);
   color: var(--white);
+}
+
+form {
+  gap: 30px;
+}
+
+.bg-main {
+  background: url(./bg-main.jpg) center center no-repeat;
+  background-size: cover;
+  height: 100vh;
 }
 
 ul {
@@ -54,3 +74,4 @@ button {
   border: 0;
   cursor: pointer;
 }
+
