@@ -1,5 +1,14 @@
 <script setup lang="ts">
+import { RouterLink, useRouter } from 'vue-router'
+import { useAuthStore } from '@/stores/auth-store'
 
+const authStore = useAuthStore()
+const router = useRouter()
+
+function logout() {
+  authStore.clearToken()
+  router.push({ name: 'auth' })
+}
 </script>
 
 <template>
@@ -26,7 +35,7 @@
           </RouterLink>
         </li>
         <li>
-          <RouterLink to="/">
+          <RouterLink to="#" @click="logout">
             <div class="nav__ico">
               <img src="../assets/nav/exit.svg" alt="">
             </div>
