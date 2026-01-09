@@ -6,6 +6,7 @@ import { computed, ref } from 'vue'
 const TOKEN_STORE_KEY = 'token-store'
 
 export const useAuthStore = defineStore('auth', () => {
+
   const token = ref<string>()
 
   const initialValue = localStorage.getItem(TOKEN_STORE_KEY)
