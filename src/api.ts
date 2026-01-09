@@ -3,6 +3,7 @@ import { useAuthStore } from './stores/auth-store'
 
 export const API_ROUTES = {
   meditation: 'meditations',
+  profile: 'profile',
   login: 'auth/login',
   register: 'auth/register',
 }

@@ -1,7 +1,18 @@
+<script setup lang="ts">
+import { useProfileStore } from '@/stores/profile-store'
+import { onMounted } from 'vue'
+
+const store = useProfileStore()
+
+onMounted(() => {
+  store.fetchProfile()
+})
+</script>
+
 <template>
   <div>
     <img class="profile-pic" src="../assets/profile.png" alt="">
-    <h1>Добро пожаловать, Наталья!</h1>
+    <h1>Добро пожаловать, {{ store.profile?.username }}!</h1>
     <p>Как вы сегодня себя чувствуете?</p>
     <ul class="meditaion-list">
       <li>
