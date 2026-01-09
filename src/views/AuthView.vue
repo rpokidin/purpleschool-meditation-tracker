@@ -25,7 +25,6 @@ function onSubmit(event: Event) {
   }
   authStore.login(form.value.username, form.value.password)
   form.value = {}
-  console.log(authStore.getToken);
 }
 </script>
 

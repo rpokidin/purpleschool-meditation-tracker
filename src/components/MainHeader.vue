@@ -19,7 +19,7 @@ function logout() {
     <nav class="nav">
       <ul>
         <li>
-          <RouterLink to="/">
+          <RouterLink to="/main" active-class="active">
             <div class="nav__ico">
               <img src="../assets/nav/play.svg" alt="">
             </div>
