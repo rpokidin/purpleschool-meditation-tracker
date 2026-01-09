@@ -9,7 +9,6 @@ const registerStore = useRegisterStore()
 
 function onSubmit(event: Event) {
   event.preventDefault()
-
   if (!form.value.username || !form.value.email || !form.value.password) {
     return
   }
