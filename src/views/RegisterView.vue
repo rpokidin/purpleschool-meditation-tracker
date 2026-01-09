@@ -1,22 +1,20 @@
 <script setup lang="ts">
 import ButtonDefault from '@/components/ButtonDefault.vue';
 import InputDefault from '@/components/InputDefault.vue';
+import { useRegisterStore } from '@/stores/register-store'
 import { ref } from 'vue';
 
 const form = ref<{ username?: string; email?: string; password?: string }>({})
+const registerStore = useRegisterStore()
 
 function onSubmit(event: Event) {
   event.preventDefault()
 
-  console.log(form.value);
-
-  /*
   if (!form.value.username || !form.value.email || !form.value.password) {
     return
   }
-  authStore.login(form.value.username, form.value.email, form.value.password)
+  registerStore.register(form.value.username, form.value.email, form.value.password)
   form.value = {}
-  */
 }
 </script>
 
