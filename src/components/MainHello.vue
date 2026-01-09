@@ -1,11 +1,29 @@
+<script setup lang="ts">
+import { useFeelingStore } from '@/stores/feeling-store'
+import { useProfileStore } from '@/stores/profile-store'
+import { onMounted } from 'vue'
+
+const profileStore = useProfileStore()
+const feelingStore = useFeelingStore()
+
+onMounted(() => {
+  profileStore.fetchProfile()
+})
+
+function onFeeling(name: string) {
+  console.log(name)
+  feelingStore.addFeeling(name)
+}
+</script>
+
 <template>
   <div>
     <img class="profile-pic" src="../assets/profile.png" alt="">
-    <h1>Добро пожаловать, Наталья!</h1>
+    <h1>Добро пожаловать, {{ profileStore.profile?.username }}!</h1>
     <p>Как вы сегодня себя чувствуете?</p>
     <ul class="meditaion-list">
       <li>
-        <button>
+        <button @click="onFeeling('feeling_calm')">
           <div class="meditaion-list__ico">
             <img src="../assets/meditation/calm.svg" alt="">
           </div>
@@ -13,7 +31,7 @@
         </button>
       </li>
       <li>
-        <button>
+        <button @click="onFeeling('feeling_relax')">
           <div class="meditaion-list__ico">
             <img src="../assets/meditation/relax.svg" alt="">
           </div>
@@ -21,7 +39,7 @@
         </button>
       </li>
       <li>
-        <button>
+        <button @click="onFeeling('feeling_focus')">
           <div class="meditaion-list__ico">
             <img src="../assets/meditation/focus.svg" alt="">
           </div>
@@ -29,7 +47,7 @@
         </button>
       </li>
       <li>
-        <button>
+        <button @click="onFeeling('feeling_anxiety')">
           <div class="meditaion-list__ico">
             <img src="../assets/meditation/anxious.svg" alt="">
           </div>

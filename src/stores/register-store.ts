@@ -5,11 +5,15 @@ import { defineStore } from 'pinia'
 export const useRegisterStore = defineStore('register', () => {
 
   async function register(username: string, email: string, password: string) {
-    await client().post<Register>(API_ROUTES.register, {
-      username,
-      email,
-      password,
-    })
+    try {
+      await client().post<Register>(API_ROUTES.register, {
+        username,
+        email,
+        password,
+      })
+    } catch(err) {
+      console.log('Ошибка', err)
+    }
   }
 
   return { register }

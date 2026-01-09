@@ -23,6 +23,10 @@ export const router = createRouter({
       component: () => import('./views/StatisticsView.vue'),
       name: 'statistics',
     },
+    { 
+      path: '/:catchAll(.*)',
+      component: () => import('./views/AuthView.vue'),
+    }
   ],
   history: createWebHistory(),
 })

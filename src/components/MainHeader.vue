@@ -7,7 +7,7 @@ const router = useRouter()
 
 function logout() {
   authStore.clearToken()
-  router.push({ name: 'auth' })
+  router.push({ name: 'login' })
 }
 </script>
 
