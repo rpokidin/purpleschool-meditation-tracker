@@ -11,7 +11,6 @@ onMounted(() => {
 })
 
 function onFeeling(name: string) {
-  console.log(name)
   feelingStore.addFeeling(name)
 }
 </script>
