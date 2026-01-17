@@ -24,7 +24,7 @@ export const router = createRouter({
       name: 'statistics',
     },
     {
-      path: '/timer/:id',
+      path: '/timer/:duration_min',
       component: () => import('./views/TimerView.vue'),
       name: 'timer',
     },

@@ -10,9 +10,8 @@ onMounted(() => {
   store.fetchMeditation()
 })
 
-const goToItem = (id: number) => {
-  router.push({ name: 'timer', params: { id } });
-  // Или: router.push(`/item/${id}`)
+const goToItem = (duration_min: number) => {
+  router.push({ name: 'timer', params: { duration_min } });
 };
 </script>
 
@@ -24,7 +23,7 @@ const goToItem = (id: number) => {
         <div class="meditation-card__desc">{{ item.description }}</div>
       </div>
       <div class="df jcsb aic">
-        <button @click="goToItem(item.id)">Начать</button>
+        <button @click="goToItem(item.duration_min)">Начать</button>
         <div class="meditation-card__time">{{ item.duration_min }} мин</div>
       </div>
     </div>
