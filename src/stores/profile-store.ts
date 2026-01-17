@@ -9,7 +9,7 @@ export const useProfileStore = defineStore('profile', () => {
 
   async function fetchProfile() {
     try {
-      const { data } = await client().post<{ data: { user: Profile } }>(API_ROUTES.profile)
+      const { data } = await client().get<{ data: { user: Profile } }>(API_ROUTES.profile)
       profile.value = data.data.user
     } catch(err) {
       console.log('Ошибка', err)

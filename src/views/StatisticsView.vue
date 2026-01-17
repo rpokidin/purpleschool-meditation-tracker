@@ -2,6 +2,7 @@
 import MainHeader from '@/components/MainHeader.vue';
 
 import { useStatisticsStore } from '@/stores/statistics-store'
+import { transStatistics } from '@/constants/translations';
 import { onMounted } from 'vue'
 
 const store = useStatisticsStore()
@@ -9,14 +10,6 @@ const store = useStatisticsStore()
 onMounted(() => {
   store.fetchStatistics()
 })
-
-const transStatistics = {
-  'total_minutes': 'Минут медитации',
-  'total_anxiety': 'Тревожных дней',
-  'total_calm': 'Спокойных дней',
-  'total_focus': 'Фокусированных дней',
-  'total_relax': 'Расслабленных дней'
-}
 </script>
 
 <template>
