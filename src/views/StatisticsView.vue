@@ -16,7 +16,7 @@ onMounted(() => {
   <MainHeader />
   <div class="p-base df jcc">
   <div class="statistics-list">
-    <div class="statistics-card" v-for="(item, index) in store.statistics" :key="item.key" :class="`statistics-card--${index}`">
+    <div class="statistics-card" v-for="(item, index) in store.statistics" :key="index" :class="`statistics-card--${index}`">
       <div class="statistics-card__days">{{ item }} </div>
       <div class="meditation-card__title">{{ transStatistics[index] }}</div>
     </div>
