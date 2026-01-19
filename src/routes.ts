@@ -23,7 +23,12 @@ export const router = createRouter({
       component: () => import('./views/StatisticsView.vue'),
       name: 'statistics',
     },
-    { 
+    {
+      path: '/timer/:duration_min',
+      component: () => import('./views/TimerView.vue'),
+      name: 'timer',
+    },
+    {
       path: '/:catchAll(.*)',
       component: () => import('./views/AuthView.vue'),
     }

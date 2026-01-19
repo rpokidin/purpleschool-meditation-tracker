@@ -1,12 +1,18 @@
 <script setup lang="ts">
 import { useMeditationStore } from '@/stores/meditation-store'
+import { useRouter } from 'vue-router';
 import { onMounted } from 'vue'
 
+const router = useRouter();
 const store = useMeditationStore()
 
 onMounted(() => {
   store.fetchMeditation()
 })
+
+const goToItem = (duration_min: number) => {
+  router.push({ name: 'timer', params: { duration_min } });
+};
 </script>
 
 <template>
@@ -17,7 +23,7 @@ onMounted(() => {
         <div class="meditation-card__desc">{{ item.description }}</div>
       </div>
       <div class="df jcsb aic">
-        <button>Начать</button>
+        <button @click="goToItem(item.duration_min)">Начать</button>
         <div class="meditation-card__time">{{ item.duration_min }} мин</div>
       </div>
     </div>
