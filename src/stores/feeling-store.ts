@@ -15,5 +15,16 @@ export const useFeelingStore = defineStore('feeling', () => {
     }
   }
 
-  return { addFeeling }
+  async function addMinutes(value: number, type = 'duration_min', ) {
+    try {
+      await client().post<Feeling>(API_ROUTES.feeling, {
+        value,
+        type,
+      })
+    } catch(err) {
+      console.log('Ошибка', err)
+    }
+  }
+
+  return { addFeeling, addMinutes }
 })
