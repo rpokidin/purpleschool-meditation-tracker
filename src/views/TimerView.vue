@@ -1,16 +1,20 @@
 <script setup lang="ts">
 import MainHeader from '@/components/MainHeader.vue';
-import { useRoute, useRouter } from 'vue-router';
-import { ref, onMounted } from 'vue';
+import { onBeforeRouteLeave, useRoute, useRouter } from 'vue-router';
+import { ref, onMounted, onBeforeUnmount } from 'vue';
 import { useMeditationStore } from '@/stores/meditation-store'
+import { useFeelingStore } from '@/stores/feeling-store'
 
-const store = useMeditationStore()
+const storeMeditation = useMeditationStore()
+const storeFeeling = useFeelingStore()
 const route = useRoute()
 const router = useRouter()
+
 const timerQuery = ref()
-const totalSeconds = ref(0);
-const remainingSeconds = ref(0);
-const isRunning = ref(false);
+const totalSeconds = ref()
+const remainingSeconds = ref()
+const titalMinutes = ref()
+const isRunning = ref(false)
 
 let timerInterval = 0;
 
@@ -19,48 +23,64 @@ function timerStart() {
     isRunning.value = true;
     timerInterval = setInterval(() => {
       if (remainingSeconds.value > 0) {
-        remainingSeconds.value--;
+        remainingSeconds.value--
       } else {
         timerStop();
-        console.log('Таймер завершён!');
       }
     }, 1000);
   }
-};
+}
 
-function timerStop () {
+function timerStop() {
   isRunning.value = false;
-  clearInterval(timerInterval);
-};
+  clearInterval(timerInterval)
+  titalMinutes.value = Math.round(remainingSeconds.value / 60)
+  storeFeeling.addMinutes(titalMinutes.value)
+}
 
-function timerReset () {
+function timerReset() {
   timerStop();
-  remainingSeconds.value = totalSeconds.value;
-};
+  remainingSeconds.value = totalSeconds.value
+}
 
 function routerBack() {
   router.back()
 }
 
 function formatTime(seconds: number) {
-  const mins = Math.floor(seconds / 60);
-  const secs = seconds % 60;
-  return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+  const mins = Math.floor(seconds / 60)
+  const secs = seconds % 60
+  return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`
 }
 
 onMounted(() => {
-  store.fetchMeditation()
+  storeMeditation.fetchMeditation()
   timerQuery.value = route.params.duration_min;
   totalSeconds.value = Number(timerQuery.value * 60)
   remainingSeconds.value = totalSeconds.value
 })
 
+onBeforeRouteLeave((to, from, next) => {
+  timerStop()
+  next()
+})
+
+const beforeUnloadHandler = (e: BeforeUnloadEvent) => {
+  timerStop()
+  e.preventDefault()
+}
+
+window.addEventListener('beforeunload', beforeUnloadHandler)
+
+onBeforeUnmount(() => {
+  window.removeEventListener('beforeUnload', beforeUnloadHandler)
+})
 </script>
 
 <template>
   <MainHeader />
   <div class="p-base">
-    <template v-for="item in store.meditation" :key="item.id">
+    <template v-for="item in storeMeditation.meditation" :key="item.id">
       <div v-if="item.duration_min == timerQuery" class="df fdc aic">
         <div class="timer-min">{{ formatTime(remainingSeconds) }}</div>
         <div class="timer-title">{{ item.title }}</div>
